@@ -7,18 +7,21 @@ public class Shoot : MonoBehaviour
     public float damage = 5.0f; //переменная наносимого урона
     public float range = 50.0f; // переменная дальности луча
 
-    public Camera cam; 
+    public Camera cam;
+    public ParticleSystem plazmLaser;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; //блокируем курсор мыши
         Cursor.visible = false;  //скрываем курсор мыши
+        plazmLaser.Stop();//останавливаем плазменный луч
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         { //нажимаем на левую кнопку мыши
+            plazmLaser.Play();//запускаем плазменный луч
             Vector3 point = new Vector3(cam.pixelWidth / 2, cam.pixelHeight / 2, 0);
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(point); //создание луча методом ScreenPointToRay().
