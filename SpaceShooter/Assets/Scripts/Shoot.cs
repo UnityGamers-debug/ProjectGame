@@ -29,6 +29,12 @@ public class Shoot : MonoBehaviour
             {
                 Debug.Log(hit.transform.name); // выводим имя объекта, в который попадает луч
 
+                DieEnemy enemy = hit.transform.GetComponent<DieEnemy>();
+                if (enemy != null)
+                {
+                    enemy.ReactToHit();
+                }
+
                 Strength objectVase = hit.transform.GetComponent<Strength>();
                 if (objectVase != null)
                 {
